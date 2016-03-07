@@ -19,7 +19,8 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'scrooloose/syntastic'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'msanders/snipmate.vim'
-"Plugin 'Valloric/YouCompleteMe'
+Plugin 'easymotion/vim-easymotion.git'
+Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
@@ -124,6 +125,11 @@ map <leader>gw :Gwrite<CR>
 map <leader>gs :Gstatus<CR>
 map <leader>gb :Gblame<CR>
 map <leader>gc :Gcommit<CR>
+
+" YouCompleteMe
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_autoclose_preview_window_after_insertion = 1
+
 
 " CTRL-P
 set wildignore+=*.pyc,*.swp,*/env/*,*/node_modules/*,*/.git/*
