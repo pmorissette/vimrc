@@ -9,7 +9,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-fugitive'
-Bundle 'tpope/vim-repeat'
+Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround.git'
 Plugin 'kien/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
@@ -19,6 +19,7 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'scrooloose/syntastic'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'msanders/snipmate.vim'
+"Plugin 'Valloric/YouCompleteMe'
 
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
@@ -35,6 +36,9 @@ set pastetoggle=<F10>
 " write & quick shortcuts
 nnoremap <leader>q :q<CR>
 nnoremap <leader>w :w<CR>
+
+" open/close the quickfix window
+nmap <leader>x :cclose<cr>
 
 " splits
 nnoremap <leader>v <C-w>v
@@ -76,18 +80,36 @@ set nostartofline           " Avoid moving cursor to BOL when jumping around
 set showmatch               " Briefly jump to a paren once it's balanced
 set wrap                    " Wrap text
 set linebreak               " don't wrap textin the middle of a word
-set laststatus=2 		    " Fixes no-menu when only 1 buffer open (for vim-airline)
+set virtualedit=block       " Let cursor move past the last char in <C-v> mode
 set scrolloff=3             " Keep 3 context lines above and below the cursor
+set backspace=2             " Allow backspacing over autoindent, EOL, and BOL
 set tabstop=2
 set softtabstop=2
 set shiftwidth=2
-
-""" Searching and Patterns
+set expandtab               " Use spaces, not tabs, for autoindent/tab key.
+set shiftround              " rounds indent to a multiple of shiftwidth
+set formatoptions=tcroql    " Setting text and comment formatting to auto
+set textwidth=80            " Lines are automatically wrapped after 80 columns
+set ls=2                    " allways show status line
+set showcmd                 " show incomplete normal mode commands as i type.
+set report=0                " : commands always print changed line count.
+set shortmess+=a            " use [+]/[ro]/[w] for modified/readonly/written.
 set ignorecase              " Default to using case insensitive searches,
 set smartcase               " unless uppercase letters are used in the regex.
 set hlsearch                " Highlight searches by default.
 set incsearch               " Incrementally search while typing a /regex
+set noautowrite             " Never write a file unless I request it.
+set noautowriteall          " NEVER.
+set noautoread              " Don't automatically re-read changed files.
+set modeline                " Allow vim options to be embedded in files;
+set modelines=5             " they must be within the first or last 5 lines.
+"
+" don't bell or blink
+set noerrorbells
+set vb t_vb=
 
+" Select the item in the list with enter
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Theme
 set background=dark
@@ -124,6 +146,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_loc_list_height=5
 
 
 " Python
@@ -134,6 +157,7 @@ au BufNewFile,BufRead *.py set textwidth=79
 au BufNewFile,BufRead *.py set expandtab
 au BufNewFile,BufRead *.py set autoindent
 au BufNewFile,BufRead *.py set fileformat=unix
+au BufNewFile,BufRead *.py set colorcolumn=80
 
 let python_highlight_all=1
 
