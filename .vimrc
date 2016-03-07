@@ -23,6 +23,7 @@ Plugin 'msanders/snipmate.vim'
 
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
+Plugin 'tell-k/vim-autopep8.git'
 Plugin 'mattn/emmet-vim'
 Plugin 'pangloss/vim-javascript'
 
@@ -158,6 +159,7 @@ au BufNewFile,BufRead *.py set expandtab
 au BufNewFile,BufRead *.py set autoindent
 au BufNewFile,BufRead *.py set fileformat=unix
 au BufNewFile,BufRead *.py set colorcolumn=80
+autocmd BufWritePre *.py :%s/\s\+$//e
 
 let python_highlight_all=1
 
