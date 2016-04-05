@@ -25,8 +25,10 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-scripts/indentpython.vim'
 Plugin 'nvie/vim-flake8'
 Plugin 'tell-k/vim-autopep8.git'
+Plugin 'alfredodeza/pytest.vim'
 Plugin 'mattn/emmet-vim'
 Plugin 'pangloss/vim-javascript'
+Plugin 'groenewege/vim-less'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -105,6 +107,10 @@ set noautowriteall          " NEVER.
 set noautoread              " Don't automatically re-read changed files.
 set modeline                " Allow vim options to be embedded in files;
 set modelines=5             " they must be within the first or last 5 lines.
+set foldmethod=syntax
+set foldlevelstart=10
+set foldnestmax=10
+
 "
 " don't bell or blink
 set noerrorbells
@@ -168,6 +174,15 @@ au BufNewFile,BufRead *.py set colorcolumn=80
 autocmd BufWritePre *.py :%s/\s\+$//e
 
 let python_highlight_all=1
+
+" Testing
+nnoremap <leader>tf :Pytest function<CR>
+nnoremap <leader>ta :Pytest file<CR>
+nnoremap <leader>tp :Pytest project<CR>
+
+nnoremap <leader>tF :Pytest function --pdb<CR>
+nnoremap <leader>tA :Pytest file --pdb<CR>
+nnoremap <leader>tP :Pytest project --pdb<CR>
 
 " Web
 let g:javascript_enable_domhtmlcss = 1
