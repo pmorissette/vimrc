@@ -18,7 +18,6 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'scrooloose/syntastic'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'msanders/snipmate.vim'
 Plugin 'easymotion/vim-easymotion.git'
 Plugin 'Valloric/YouCompleteMe'
 
@@ -30,6 +29,11 @@ Plugin 'mattn/emmet-vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'groenewege/vim-less'
 Plugin 'elzr/vim-json'
+
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -187,3 +191,7 @@ nnoremap <leader>tP :Pytest project --pdb<CR>
 
 " Web
 let g:javascript_enable_domhtmlcss = 1
+
+" Snipmate rebind
+imap <C-J> <Plug>snipMateNextOrTrigger
+smap <C-J> <Plug>snipMateNextOrTrigger

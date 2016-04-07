@@ -1,0 +1,38 @@
+snippet t
+	define('${1:something}', function() {
+		it('${2:should}', function() {
+		});
+	});
+
+snippet tb
+	define('${1:what}', function() {
+		beforeEach(function() {
+		});
+
+		it('${2:should}', function() {
+		});
+	});
+
+snippet ti
+	define('${1:what}', function() {
+		var ${2:injected};
+
+		beforeEach(inject(function() {
+		}));
+
+		it('${3:should}', function() {
+		});
+	});
+
+snippet tba
+	define('${1:what}', function() {
+		beforeEach(function() {
+		});
+
+		afterEach(function() {
+		});
+
+		it('${2:should}', function() {
+		});
+	});
+
