@@ -1,32 +1,48 @@
-snippet t
-	define('${1:something}', function() {
+snippet des
+	describe('${1:something}', function() {
+		${0}
+	});
+
+snippet di
+	describe('${1:something}', function() {
 		it('${2:should}', function() {
+			${0}
 		});
 	});
 
-snippet tb
-	define('${1:what}', function() {
-		beforeEach(function() {
-		});
+snippet desc
+	describe('${1:controllerName}', function() {
+		var scope, ctrl;
 
-		it('${2:should}', function() {
-		});
-	});
-
-snippet ti
-	define('${1:what}', function() {
-		var ${2:injected};
-
-		beforeEach(inject(function() {
+		beforeEach(inject(function($controller, $rootScope) {
+			scope = $rootScope.$new();
+			ctrl = $controller('$1', {$scope: scope});
 		}));
 
-		it('${3:should}', function() {
+		it('should be defined', function() {
+			expect(ctrl).toBeDefined();
 		});
 	});
 
-snippet tba
-	define('${1:what}', function() {
+snippet it
+	it('${1:should}', function() {
+		${0}
+	});
+
+snippet dbi
+	describe('${1:what}', function() {
 		beforeEach(function() {
+			${0}
+		});
+
+		it('${2:should}', function() {
+		});
+	});
+
+snippet dbai
+	describe('${1:what}', function() {
+		beforeEach(function() {
+			${0}
 		});
 
 		afterEach(function() {
@@ -36,3 +52,60 @@ snippet tba
 		});
 	});
 
+snippet be
+	beforeEach(function() {
+		${0}
+	});
+		
+snippet bi
+	beforeEach(inject(function(${1:something}) {
+		${0}
+	}));
+
+snippet bic
+	beforeEach(inject(function($controller, $rootScope) {
+		scope = $rootScope.$new();
+		ctrl = $controller('${1:controllerName}', {$scope: scope});
+	}));
+
+snippet bm
+	beforeEach(module('${1:module}'));
+
+snippet bp
+	beforeEach(module(function($provide) {
+		$provide.value('${1:name}', $1);
+	}));
+
+snippet pr
+	$provide.value('${1:name}', $1);${0}
+
+snippet mo
+	module('${1:moduleName}');
+
+snippet mp
+	module(function($provide) {
+		$provide.value('${1:name}', ${2:object});
+	});
+
+snippet exd
+	expect(${1:object}).toBeDefined();
+
+snippet extb
+	expect(${1:object}).toBe(${2:equality});
+
+snippet sc
+	scope = $rootScope.$new();
+	ctrl = $controller('${1:name}', {$scope: scope${0}});
+
+snippet mod
+	angular.module('${1:name}', [${0}])
+
+snippet spy
+	${1:obj} = jasmine.createSpy($1);
+
+snippet spyo
+	${1:obj} = jasmine.createSpyObj($1, ['${2:method}'${0}]);
+
+snippet spyp
+	${1:obj} = jasmine.createSpy($1);
+	$provide.value('$1', $1);

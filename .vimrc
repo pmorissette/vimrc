@@ -193,5 +193,5 @@ nnoremap <leader>tP :Pytest project --pdb<CR>
 let g:javascript_enable_domhtmlcss = 1
 
 " Snipmate rebind
-imap <C-J> <Plug>snipMateNextOrTrigger
+imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
 smap <C-J> <Plug>snipMateNextOrTrigger
