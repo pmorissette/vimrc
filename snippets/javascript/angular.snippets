@@ -101,11 +101,11 @@ snippet mod
 	angular.module('${1:name}', [${0}])
 
 snippet spy
-	${1:obj} = jasmine.createSpy($1);
+	${1:obj} = jasmine.createSpy('$1');
 
 snippet spyo
-	${1:obj} = jasmine.createSpyObj($1, ['${2:method}'${0}]);
+	${1:obj} = jasmine.createSpyObj('$1', ['${2:method}'${0}]);
 
 snippet spyp
-	${1:obj} = jasmine.createSpy($1);
+	${1:obj} = jasmine.createSpy('$1');
 	$provide.value('$1', $1);
