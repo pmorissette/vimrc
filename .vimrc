@@ -65,9 +65,6 @@ nnoremap <leader>u :nohlsearch<CR>
 " reload vim settings
 map <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
-" Run python (nose) tests
-map <F5> <Esc>:!clear;nosetests -d<CR>
-
 " Run make in current dir
 map <F6> <Esc>:!clear;make<CR>
 
@@ -177,6 +174,10 @@ au BufNewFile,BufRead *.py set fileformat=unix
 au BufNewFile,BufRead *.py set colorcolumn=80
 autocmd BufWritePre *.py :%s/\s\+$//e
 
+" Run python (nose) tests
+au BufNewFile,BufRead *.py map <F5> <Esc>:!clear;nosetests -d<CR>
+
+
 let python_highlight_all=1
 
 " Testing
@@ -192,6 +193,10 @@ nnoremap <leader>tP :Pytest project --pdb<CR>
 
 " Web
 let g:javascript_enable_domhtmlcss = 1
+au BufNewFile,BufRead *.js map <F5> <Esc>:!clear;npm test<CR>
+" This fixes issue with Karma tracking test files. Not ideal so just doing it
+" for JS files
+au BufNewFile,BufRead *.js set backupcopy=yes 
 
 " Snipmate rebind
 imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
