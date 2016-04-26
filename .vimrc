@@ -141,7 +141,6 @@ map <leader>gc :Gcommit<CR>
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:ycm_autoclose_preview_window_after_insertion = 1
 
-
 " CTRL-P
 set wildignore+=*.pyc,*.swp,*/env/*,*/node_modules/*,*/.git/*
 " let g:ctrlp_cmd = 'CtrlPMixed'
@@ -182,10 +181,12 @@ let python_highlight_all=1
 
 " Testing
 nnoremap <leader>tf :Pytest function<CR>
+nnoremap <leader>tm :Pytest method<CR>
 nnoremap <leader>ta :Pytest file<CR>
 nnoremap <leader>tp :Pytest project<CR>
 
 nnoremap <leader>tF :Pytest function --pdb<CR>
+nnoremap <leader>tM :Pytest method --pdb<CR>
 nnoremap <leader>tA :Pytest file --pdb<CR>
 nnoremap <leader>tP :Pytest project --pdb<CR>
 
@@ -195,3 +196,10 @@ let g:javascript_enable_domhtmlcss = 1
 " Snipmate rebind
 imap <C-J> <esc>a<Plug>snipMateNextOrTrigger
 smap <C-J> <Plug>snipMateNextOrTrigger
+
+" SQL
+function! SendSql() range
+  let @a = system('echo '.shellescape(join(getline(a:firstline, a:lastline), "\n")).' | send-sql -v')
+endfunction
+
+au BufNewFile,BufRead *.sql map <F5> <Esc>:'<,'>call SendSql()<CR><Esc>)"ap
