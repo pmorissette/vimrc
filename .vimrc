@@ -218,3 +218,5 @@ function! SendSql() range
 endfunction
 
 au BufNewFile,BufRead *.sql map <F5> <Esc>:'<,'>call SendSql()<CR><Esc>)"ap
+" JSON
+let g:vim_json_syntax_conceal = 0
